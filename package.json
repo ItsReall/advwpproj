@@ -1,0 +1,19 @@
+{
+  "name": "advwpproj",
+  "version": "1.0.0",
+  "description": "This code is Final project of Advanced Wep Programming class",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ItsReall/advwpproj.git"
+  },
+  "author": "JHP",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ItsReall/advwpproj/issues"
+  },
+  "homepage": "https://github.com/ItsReall/advwpproj#readme"
+}
