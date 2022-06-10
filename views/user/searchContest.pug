@@ -1,0 +1,40 @@
+extends ../layout
+
+//- 공모전 검색 페이지
+block content
+  h1.text-center.mt-5 공모전 관리
+  div.float-right
+    .container
+      .row.justify-content-end.mt-4.mb-3
+        form.form-inline(action='/user/searchContest', method='post')
+          .row.align-items-center.mr-0
+            .col-md-auto
+              h4.text-center.mt-1 공모전 시작일자
+            .col-md-auto
+              input.form-control(type="date", name="start_date")
+            .col-md-auto
+              h4.text-center.mt-1 공모전 종료일자
+            .col-md-auto
+              input.form-control(type="date", name="end_date")
+            button.btn.btn-outline-secondary.my-2.my-sm-0.mr-auto(type="submit") 검색
+
+  div
+    table.table.table.pull-center.table-hover.text-center(style="width: 100%;")
+      thead
+        tr
+          th(scope="col") 공모전 이름
+          th(scope="col") 공모전 진행기간
+          th(scope="col") 분야
+          th(scope="col") 주최사
+      tbody
+        each value in result
+          tr
+            td 
+              a(href=`/user/contest/${value.id}`)= value.contest_name
+            td #{value.con_start_date}~#{value.con_end_date}
+            td #{value.field}
+            td #{value.contest_host}
+  
+    ul.pagination.justify-content-center
+      while n < totalPage+1
+        a.page-link(href=`searchContest?page=${n}`) #{n++}

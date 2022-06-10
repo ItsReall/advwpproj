@@ -2,7 +2,7 @@
   "development": {
     "username": "root",
     "password": "pjh45654565!",
-    "database": "nodebird",
+    "database": "contestmanage",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },

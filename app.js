@@ -1,6 +1,5 @@
 const express = require('express');
 const morgan = require('morgan');
-const nunjucks = require('nunjucks');
 const cookieParser = require('cookie-parser');
 const path = require('path');
 const session = require('express-session');
@@ -14,14 +13,16 @@ const pageRouter = require('./routes/page');
 const authRouter = require('./routes/auth');
 const postRouter = require('./routes/post');
 const { sequelize } = require('./models');
+const passportConfig = require('/passport');
+const { getState } = require('./routes/middlewares');
+
 
 const app = express();
-app.set('port', process.env.PORT || 8001);
-app.set('view engine', 'html');
-nunjucks.configure('views', {
-  express: app,
-  autoescape: true,
-});
+passportConfig();
+
+app.set('port', process.env.PORT || 3001);
+app.set('views', './views');
+app.set('view engine', 'pug');
 
 sequelize
   .sync({ force: false })
@@ -76,3 +77,5 @@ app.use((err, req, res, next) => {
 app.listen(app.get('port'), () => {
   console.log(app.get('port'), '번 포트에서 대기중');
 });
+
+module.exports = app;

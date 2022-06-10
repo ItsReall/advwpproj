@@ -1,0 +1,40 @@
+extends layout
+
+//- 마이 페이지, 수정 필요
+block content
+  - console.log('===================================')
+  - console.log(current_user.email)
+  section.fdb-block.fp-active(data-block-type="contents" data-id="1" draggable="true")
+    .container
+      .row.text-left.align-items-center
+        .col-10.col-lg-8.pt-4.pt-lg-0
+            .row.mt-3
+              .col-12.col-sm-6.pt-3.pt-sm-0
+                h3
+                  strong 이메일
+                    p.text-h3.ml-3 #{current_user.email}
+              .col-12.col-sm-6.pt-3.pt-sm-0
+                h3
+                  strong 이름
+                    p.text-h3.ml-3 #{current_user.name}
+              .col-12.col-sm-6.pt-3.pt-sm-0
+                h3
+                  strong 최종학력
+                    p.text-h3.ml-3 #{current_user.emp_final_edu}
+                      
+              .col-12.col-sm-6.pt-3.pt-sm-0
+                h3
+                  strong 기술
+                    p.text-h3.ml-3 #{current_user.skill}
+              .col-12.col-sm-6.pt-3.pt-sm-0
+                h3
+                  strong 경력
+                    p.text-h3.ml-3 #{current_user.career}
+                      
+              .col-12.col-sm-6.pt-3.pt-sm-0
+                h3
+                  strong 부서
+                    p.text-h3.ml-3 #{current_user.dept}
+                     
+            
+            a.btn.btn-black.btn-empty(href='/updateMyInfo', style='float: right') 수정

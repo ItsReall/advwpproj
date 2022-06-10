@@ -1,0 +1,29 @@
+extends layout
+
+//- 회원정보 수정 페이지
+block content
+    form(action='/updateMyInfo', method="POST")
+        div(name="mypage")
+        section.fdb-block.fp-active(data-block-type="contents" data-id="1" draggable="true")
+            .container
+            .row.text-left.align-items-center
+                .col-10.col-lg-8.pt-4.pt-lg-0
+                    .row.mt-3
+                    .col-12.col-sm-6.pt-3.pt-sm-0
+                        h3
+                        strong 이메일
+                            p.text-h3.ml-3 #{current_user.email}
+                    .col-12.col-sm-6.pt-3.pt-sm-0
+                        h3
+                        strong 이름
+                            input.form-control.text-h3.ml-3(type="text", name="name" value=`${current_user.name}`)
+                    .col-12.col-sm-6.pt-3.pt-sm-0
+                        h3
+                        strong 대학교
+                            input.form-control.text-h3.ml-3(type="text", name="univ" value=`${current_user.univ}`)
+                    .col-12.col-sm-6.pt-3.pt-sm-0
+                        h3
+                        strong 기술
+                            input.form-control.text-h3.ml-3(type="text", name="skill" value=`${current_user.skill}`)
+                    .col-12.col-sm-6.pt-3.pt-sm-0                  
+                    button.btn.btn-black.btn-empty(type="submit", style="float: right") 수정완료

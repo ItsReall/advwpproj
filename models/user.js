@@ -8,12 +8,12 @@ class User extends Sequelize.Model {
         allowNull: true,
         unique: true,
       },
-      nick: {
-        type: Sequelize.STRING(15),
+      name: {
+        type: Sequelize.STRING(20),
         allowNull: false,
       },
       password: {
-        type: Sequelize.STRING(100),
+        type: Sequelize.STRING(255),
         allowNull: true,
       },
       provider: {
@@ -42,7 +42,7 @@ class User extends Sequelize.Model {
   }
 
   static associate(db) {
-    db.User.hasMany(db.Post);
+    db.User.hasMany(db.Contest);
     // db.User.belongsToMany(db.User, {
     //   foreignKey: 'followingId',
     //   as: 'Followers',

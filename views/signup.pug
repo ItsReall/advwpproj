@@ -1,0 +1,28 @@
+extends layout
+
+//- 회원가입
+block content
+  h1.main 회원가입
+  form(id="signup" action="/auth/signup", method='post')
+    .form-group
+      label(for="inputEmail") 이메일
+      input#inputId.form-control(type="email" name="email" placeholder="이메일" required)
+      button#checkId.btn(style='float:right') 중복확인
+      p#checkresult
+    .form-group
+      label(for="inputPassword") 패스워드
+      input#inputPassword.form-control(type="password" pattern=".{6,20}" name="password" placeholder="비밀번호" required)
+    .form-group
+      label(for="inputName") 이름
+      input#inputName.form-control(type="name" name="name" placeholder="이름" required)
+    .form-group
+      label(for="univ") 대학교
+      input#inputAddress.form-control(type="text" name="univ" placeholder="대학교"  required)
+    .form-group
+      label(for="skill") 기술
+      input#inputAddress.form-control(type="text" name="skill" placeholder="기술"  required)      
+    button.btn.btn-primary(type="submit") 회원가입
+  script(src="https://unpkg.com/axios/dist/axios.min.js")
+  script(src="/javascripts/signup.js")
+
+    

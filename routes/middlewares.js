@@ -18,3 +18,13 @@ exports.isNotLoggedIn = (req, res, next) => {
     res.redirect(`/?error=${message}`);
   }
 };
+
+exports.getState = async (req, res, next) => {
+  if (!req.user) {
+    res.locals.state = "beforeLogin";
+  } else {
+    res.locals.state = "user";
+  }
+  console.log(res.locals.state);
+  next();
+};

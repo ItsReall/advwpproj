@@ -8,24 +8,34 @@ const User = require('../models/user');
 const router = express.Router();
 
 // local 회원가입
-router.post('/join', isNotLoggedIn, async (req, res, next) => {
-  const { email, nick, password } = req.body;
+router.post('/signup', isNotLoggedIn, async (req, res, next) => {
+  const { email, name, password, skill, univ } = req.body;
   try {
-    const exUser = await User.findOne({ where: { email } });
+    const exUser = await User.findOne({ where: { user_Email: email } });
     if (exUser) {
       return res.redirect('/join?error=exist');
     }
-    console.info('___User.create(): ' + nick);
+    console.info('___User.create(): ' + name);
     const hash = await bcrypt.hash(password, 12);
     await User.create({
-      email,
-      nick,
-      password: hash,
+      user_Email: email,
+      user_PW: hash,
+      name,
+      univ,
+      skill
     });
     return res.redirect('/');
   } catch (error) {
     console.error(error);
     return next(error);
+  }
+});
+// 회원가입 화면
+router.get("/signup", isNotLoggedIn, async (req, res, next) => {
+  try {
+    res.render("signup", { title: "Signup" });
+  } catch (error) {
+    console.error(error);
   }
 });
 
@@ -50,6 +60,15 @@ router.post('/login', isNotLoggedIn, (req, res, next) => {
       return res.redirect('/');
     });
   })(req, res, next); // 미들웨어 내의 미들웨어에는 (req, res, next)를 붙입니다.
+});
+
+//로그인 화면
+router.get("/login", isNotLoggedIn, (req, res, next) => {
+  try {
+    res.render("login", { title: "Login" });
+  } catch (error) {
+    console.error(error);
+  }
 });
 
 // logout

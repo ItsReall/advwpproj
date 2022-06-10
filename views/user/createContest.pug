@@ -1,0 +1,31 @@
+extends ../layout
+
+//- 공모전 등록 페이지
+block content
+  form(action="/user/createContest", method="post")
+    h1.text-center.mt-5 공모전 등록
+    .form-group
+      .row.align-items-center
+        .col.mt-4
+          h4 공모전 이름
+          input.form-control(type="text", placeholder="공모전 이름을 입력해주세요.", name="name")
+      .row.align-items-center.mt-4
+        .col
+          h4 공모전 시작일자
+          input.form-control(type="date", name="start_date")
+      .row.align-items-center.mt-4
+        .col
+          h4 공모전 종료일자
+          input.form-control(type="date", name="end_date")
+      .row.align-items-center.mt-4
+        .col
+          h4 분야
+          input.form-control(type="text", placeholder="분야를 입력해주세요.", name="field")
+      .row.align-items-center.mt-4
+        .col
+          h4 주최사
+          input.form-control(type="text", placeholder="주최사를 입력해주세요.", name="host")
+            
+      .row.justify-content-start.mt-4
+        .col(style="margin-bottom: 1em")
+          button.btn.btn-outline-dark(type="submit", style="float: right") 공모전 등록

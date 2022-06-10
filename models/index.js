@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 const User = require('./user');
-const Post = require('./post');
+const Contest = require('./contest');
 
 const env = process.env.NODE_ENV || 'development';
 const config = require('../config/config')[env];
@@ -16,12 +16,12 @@ const sequelize = new Sequelize(
 db.sequelize = sequelize;
 
 db.User = User;
-db.Post = Post;
+db.Contest = Contest;
 
 User.init(sequelize);
-Post.init(sequelize);
+Contest.init(sequelize);
 
 User.associate(db);
-Post.associate(db);
+Contest.associate(db);
 
 module.exports = db;

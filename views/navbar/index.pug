@@ -1,0 +1,11 @@
+nav.navbar.navbar-expand-lg.navbar-white.bg-light
+  a.navbar-brand.font-weight-bold(href="/") 공모전관리
+  button.navbar-toggler(type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation")
+    span.navbar-toggler-icon
+  #navbarSupportedContent.collapse.navbar-collapse
+    if state == 'user'
+        block user
+            include ./nav_user
+    else
+        block unauthorized
+          include ./unauthorized

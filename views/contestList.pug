@@ -1,0 +1,25 @@
+//- 메인 페이지
+block projectList
+  h1.text-center.mt-5 공모전
+  .row.mr-0
+    .col-sm-12
+      h3.ml-3.mt-5 참가 공모전
+      
+      table#allConList.table.table.pull-center.table-hover.text-center(style="width: 100%;margin: auto;")
+        thead
+          tr
+            th(scope="col") 공모전 이름
+            th(scope="col") 공모전 진행기간
+            th(scope="col") 분야
+            th(scope="col") 주최사
+        tbody
+          each value in prj_before
+            tr
+                td
+                  a.contest_name(href=`/user/contest/${value.Contest.id}`)= value.Contest.contest_name
+                td.duration= value.Contest.con_start_date+' ~ '+ value.Contest.con_end_date
+                td.field= value.Contest.field
+                td.host= value.Contest.contest_host 
+                
+  script(src="https://unpkg.com/axios/dist/axios.min.js")
+  script(src="/javascripts/projectList.js")

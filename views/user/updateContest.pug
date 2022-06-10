@@ -1,0 +1,34 @@
+extends ../layout
+
+//- 공모전 수정 페이지
+block content
+  form(action=`/user/contest/${currentCon.id}/update`, method="POST")
+    div.mr-3.ml-3
+      h1.text-center.mt-5 공모전 수정
+      section.fdb-block.fp-active(data-block-type="contents" data-id="1" draggable="true")
+        .container
+          .row.text-left.align-items-center.mt-3
+            .col
+              h3
+                strong 공모전 이름
+                  input.form-control.text-h3(type="text", name="contest_name" value=`${currentCon.contest_name}`)
+            .col
+              h3
+                strong 공모전 시작일자
+                  input.form-control(type="date", name="con_start_date" value=`${currentCon.con_start_date}`)
+                  //- input.form-control.text-h3(type="text", name="proj_start_date" value=`${currentProj.proj_start_date}`)
+            .col
+              h3
+                strong 공모전 종료일자
+                  input.form-control(type="date", name="con_end_date" value=`${currentCon.con_end_date}`)
+                  //- input.form-control.text-h3(type="text", name="proj_end_date" value=`${currentProj.proj_end_date}`)
+            .col
+              h3
+                strong 분야
+                  input.form-control.text-h3(type="text", name="field" value=`${currentCon.field}`)
+            .col
+              h3
+                strong 주최사
+                  input.form-control.text-h3(type="text", name="contest_host" value=`${currentCon.contest_host}`)
+  
+    button.btn.btn-black.btn-empty(type="submit", style="float: right") 수정완료
